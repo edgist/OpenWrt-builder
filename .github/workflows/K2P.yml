@@ -6,8 +6,8 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt
-   
+name: Build K2P OpenWrt
+
 on:
   release:
     types: [published]
