@@ -14,4 +14,3 @@
 git clone https://github.com/fw876/helloworld.git ./package/lean/hellowword
 ./scripts/feeds update -a
 ./scripts/feeds install -a
-make package/feeds/luci/luci-base/compile V=99
