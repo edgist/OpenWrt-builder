@@ -11,6 +11,7 @@
 #git clone https://github.com/vernesong/OpenClash package/OpenClash
 
 ####
-
+git clone https://github.com/fw876/helloworld.git package/hellowword
 ./scripts/feeds update -a
 ./scripts/feeds install -a
+make package/feeds/luci/luci-base/compile V=99
