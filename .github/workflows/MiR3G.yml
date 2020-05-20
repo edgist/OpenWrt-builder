@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build MiR3G OpenWrt
+name: Build MiR3G
 
 on:
   release:
@@ -26,7 +26,7 @@ env:
   REPO_BRANCH: master
   CONFIG_FILE: MiR3G.config
   DIY_SH: diy.sh
-  FREE_UP_DISK: false
+  FREE_UP_DISK: true
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
