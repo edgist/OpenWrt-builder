@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build Pi OpenWrt
+name: Build Pi
 
 on:
   release:
