@@ -17,8 +17,8 @@ on:
       - master
     paths:
       - 'MiR3G.config'
-#  schedule:
-#    - cron: 0 2 * * 5
+  schedule:
+    - cron: 0 2 * * 5
 #  watch:
 #    types: started
 
