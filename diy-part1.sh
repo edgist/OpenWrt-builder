@@ -11,3 +11,4 @@
 #git clone https://github.com/vernesong/OpenClash package/OpenClash
 
 ####
+git clone https://github.com/fw876/helloworld.git ./package/lean/hellowword
