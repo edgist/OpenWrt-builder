@@ -10,13 +10,12 @@ name: Build Redmi-AC2100
 
 on:
   repository_dispatch:
-  release:
-    types: published
-  push:
-    branches:
-      - master
-    paths:
-      - 'RM2100.config'
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
   schedule:
     - cron: 0 2 * * 5
 #  watch:
