@@ -79,7 +79,6 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
-        git checkout 5be81314bb08934fbe03c2e26191b80f021b0d2b^ target/linux/ramips/patches-5.4/102-mt7621-fix-cpu-clk-add-clkdev.patch
         $GITHUB_WORKSPACE/$DIY_P2_SH
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
