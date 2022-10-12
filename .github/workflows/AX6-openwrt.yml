@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build AX6
+name: Build AX6 openwrt
 
 on:
   repository_dispatch:
@@ -18,14 +18,14 @@ on:
         default: "false"
   schedule:
     - cron: 0 2 * * 5
-#  watch:
-#    types: started
+  watch:
+    types: started
 
 env:
-  REPO_URL: https://github.com/aagist/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/robimarko/openwrt
+  REPO_BRANCH: ipq807x-5.15-pr
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: AX6.config
+  CONFIG_FILE: AX6-openwrt.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
@@ -61,6 +61,7 @@ jobs:
         run: |
           df -hT $PWD
           git clone $REPO_URL -b $REPO_BRANCH openwrt
+          git clone https://github.com/rufengsuixing/luci-app-zerotier openwrt/package/feeds/luci-app-zerotier
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
       - name: Cache
         uses: klever1988/cachewrtbuild@main
@@ -86,6 +87,7 @@ jobs:
           chmod +x $DIY_P2_SH
           cd openwrt
           $GITHUB_WORKSPACE/$DIY_P2_SH
+          sed -i 's/wireless.radio${devidx}.disabled=1/wireless.radio${devidx}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
       - name: SSH connection to Actions
         uses: P3TERX/ssh2actions@v1.0.0
         if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
@@ -175,8 +177,8 @@ jobs:
       - name: Delete workflow runs
         uses: GitRML/delete-workflow-runs@main
         with:
-          retain_days: 30
-          keep_minimum_runs: 3
+          retain_days: 50
+          keep_minimum_runs: 7
 
       - name: Remove old Releases
         uses: dev-drprasad/delete-older-releases@v0.1.0
