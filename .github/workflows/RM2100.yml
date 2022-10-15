@@ -65,9 +65,8 @@ jobs:
       - name: Cache
         uses: klever1988/cachewrtbuild@main
         with:
-          ccache: 'false'
+          ccache: 'true'
           mixkey: 'ramips'
-          clean: 'true'
           prefix: ${{ github.workspace }}/openwrt
       - name: Load custom feeds
         run: |
