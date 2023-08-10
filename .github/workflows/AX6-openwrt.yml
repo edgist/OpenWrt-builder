@@ -67,6 +67,7 @@ jobs:
         uses: klever1988/cachewrtbuild@main
         with:
           ccache: 'true'
+          mixkey: 'ipq807x'
           prefix: ${{ github.workspace }}/openwrt
       - name: Load custom feeds
         run: |
