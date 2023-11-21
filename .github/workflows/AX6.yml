@@ -107,6 +107,10 @@ jobs:
         run: |
           cd openwrt
           git checkout 26f363463
+          sed -i '20 s/$/ +kmod-bonding/' package/qca/nss/qca-nss-clients-64/Makefile
+          sed -i '48 s/$/ +kmod-bonding/' package/qca/nss/qca-nss-clients-64/Makefile
+          wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/ipq807x/patches-5.10/606-qca-nss-ecm-bonding-add-bond_get_id.patch -P target/linux/ipq807x/patches-5.10 
+          wget https://raw.githubusercontent.com/coolsnowwolf/lede/master/target/linux/ipq807x/patches-5.10/607-qca-nss-ecm-Add-bridge-join-and-leave-netdev-cmds.patch -P target/linux/ipq807x/patches-5.10
           echo -e "$(nproc) thread compile"
           make -j$(nproc) || make -j1 || make -j1 V=s
           echo "status=success" >> $GITHUB_OUTPUT
