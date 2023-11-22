@@ -65,7 +65,7 @@ jobs:
           cd openwrt
           git reset --hard 26f3634631244eedfbdfd61ea6cc3a2d7f5d896f
       - name: Revert AX6
-        run: wget --no-verbose https://raw.githubusercontent.com/fichenx/Actions-OpenWrt/main/general/AX6/target/linux/ipq807x/image/generic.mk -P openwrt/target/linux/ipq807x/image/
+        run: wget --no-verbose https://raw.githubusercontent.com/fichenx/Actions-OpenWrt/main/general/AX6/target/linux/ipq807x/image/generic.mk -O openwrt/target/linux/ipq807x/image/generic.mk
       
       - name: Cache
         uses: klever1988/cachewrtbuild@main
